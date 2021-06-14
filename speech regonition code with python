@@ -1,0 +1,41 @@
+import pyttsx3
+import speech_recognition as sr
+import os
+
+
+
+print("Enter ur requirements....we are listening" , end= ' ')
+# p = input()
+
+r = sr.Recognizer()
+
+with sr.Microphone() as source:
+      r.adjust_for_ambient_noise(source)      
+      print('start say ..')
+      audio = r.listen(source)
+      print('specch done. ')
+
+p = r.recognize_google(audio) 
+
+if (((("run" in p ) or ("execute" in p) or ("open" in p) or ("launch" in p)))) and (("notepad" in p) or ("editor" in p)) :
+ pyttsx3.speak("just wait")
+ os.system("notepad")
+
+elif (((("tell" in p ) or ("execute" in p) or ("open" in p) or ("launch" in p)))) and (("famous person" in p) or ("personalities" in p)) :
+ x=["Amitabh bacchan" , "Narendera modiji" , "Mother terisa"]   
+ print(x)
+    
+elif(((("run" in p ) or ("execute" in p) or ("open" in p) or ("launch" in p)))) and (("player" in p) or ("media" in p)) :  
+    
+ os.system("wmplayer")
+           
+elif(((("run" in p ) or ("execute" in p) or ("open" in p) or ("launch" in p)))) and (("DEVC++" in p) or ("compiler" in p)) :  
+  
+ os.system("devcpp")
+
+elif(((("run" in p ) or ("execute" in p) or ("open" in p) or ("launch" in p)))) and (("virtualbox" in p) or ("virtualmachine" in p)) :
+    
+ os.system("VirtualBox")
+             
+else :
+ print("dont support")
