@@ -1,0 +1,23 @@
+import socket
+import cv2
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+IP = "192.168.29.130"
+PORT=8888
+client_socket.connect((IP<PORT))
+
+cap =cv2.VideoCapture(0)
+
+while True:
+       ret,photo = cap.read()
+       cv2.imwrite("client.jpg",photo)
+       file = open("client.jpg","rb")
+       img_data=file.read(2048000)
+       client_socket.send(img_data)
+       cv2.imshow("Client",photo)
+       if  cv2.waitkey(1) == 13:
+            break
+cv2.destroyAllWindows()
+cap.release()
+
+file.close()
+client_socket.close()
